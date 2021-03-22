@@ -11,4 +11,17 @@ test("form header renders", () => {
       ).toBeInTheDocument();
 });
 
-test("form shows success message on submit with form details", () => { expect(() => render(<CheckoutForm />))();});
+test("form shows success message on submit with form details", () => {
+    render(<CheckoutForm />);
+const submitButton = screen.getByText(/submit/i);
+userEvent.click(submitButton)
+
+const firstNameInput = screen.getByLabelText(/firstName/i);
+
+userEvent.type(firstNameInput, "Kyle")
+
+const name = screen.getByText("Kyle");
+expect(name).toBeDefined();
+expect(name).toThrow
+
+});
